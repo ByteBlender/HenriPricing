@@ -5,22 +5,22 @@
 }
 
 <div class="jumbotron">
-    <form action="Index">
+    <form action="~/Home/Index">
 
 
-        <p class="lead">
-            <table class="text-primary">
-                <tr>
-                    <td class="text-primary"> Select Brand </td>
-                    <td class="text-primary"> Supplier Price </td>
-                    <td class="text-primary"> Shipping Volume </td>
-                    <td>  </td>
+        <p class="jumbotron">
+            @*<table class="text-primary">
+                >
+                <td class="text-primary col-md-1"> Select Brand </td>
+                <td class="text-primary col-md-1"> Supplier Price </td>
+                <td class="text-primary col-md-1"> Shipping Volume </td>
+                <td>  </td>
                 </tr>
                 <tr>
-                    <td class="text-primary" >   @Html.DropDownListFor(Model => Model.BrandName, new SelectList(Model.Brands))  </td>
-                    <td> <input type="Text" name="txtP1" value="@Model.P1" /> </td>
-                    <td> <input type="Text" name="txtM3" value="@Model.M3" /> </td>
-                    <td> <input type="submit" value="Calculate RRP" class="btn btn-primary btn-sm" /> </td>
+                    <td class="text-primary col-md-1">@Html.DropDownListFor(Model => Model.BrandName, new SelectList(Model.Brands))  </td>
+                    <td class="text-primary col-md-1"><input type="Text" name="txtP1" value="@Model.P1" /> </td>
+                    <td class="text-primary col-md-1"><input type="Text" name="txtM3" value="@Model.M3" /> </td>
+                    <td class="text-primary col-md-1"><input type="submit" value="Calculate RRP" class="btn btn-primary btn-sm" /> </td>
                 </tr>
                 <tr><td><label> </label>     </td></tr>
                 <tr></tr>
@@ -28,18 +28,66 @@
                 @{
                     if (!string.IsNullOrEmpty(Model.Shipping) || !string.IsNullOrEmpty(Model.RRP))
                     {
-                <tr>
-                    <td class="text-primary h3 text-right"> RRP </td>
-                    <td class="text-primary h3 table-bordered text-center"> @Model.RRP </td>
-                    <td class="text-primary h4 text-right"> Shipping Cost  </td>
-                    <td class="text-primary h3 table-bordered text-center">  @Model.Shipping   </td>
-                </tr>
+                        <tr>
+                            <td class="text-primary h3 text-right col-md-1"> RRP </td>
+                            <td class="text-primary h3 table-bordered text-center col-md-1"> @Model.RRP </td>
+                            <td class="text-primary h4 text-right col-md-1"> Shipping Cost  </td>
+                            <td class="text-primary h3 table-bordered text-center col-md-1">  @Model.Shipping   </td>
+                        </tr>
                     }
                 }
 
-            </table>
+            </table>*@
 
+            <div class="row">
+                <div class="text-primary col-md-3">
+                    Select Brand
+                    @Html.DropDownListFor(Model => Model.BrandName, new SelectList(Model.Brands))
+                </div>
+                <div class="text-primary col-md-3">
+                    Supplier Price
+                    <input type="Text" name="txtP1" value="@Model.P1" />
+                </div>
+                <div class="text-primary col-md-3">
+                    Shipping Volume
+                    <input type="Text" name="txtM3" value="@Model.M3" />
+                </div>
+                <div class="text-primary col-md-1">
+                                               <br />     
+                    <input type="submit" value="Calculate RRP" class="btn btn-primary btn-sm" />
+                </div>
 
+            </div>
+            <div class="row ">
+                <div class="text-primary col-md-3">
+           
+                </div>
+                <div class="text-primary col-md-3">
+                   
+                </div>
+                <div class="text-primary col-md-3">
+                   
+                </div>
+                <div class="text-primary col-md-3">
+                   
+                </div>
+            </div>
+            <div class="row">
+                @{
+                        if (!string.IsNullOrEmpty(Model.Shipping) || !string.IsNullOrEmpty(Model.RRP))
+                        {
+                <div class="text-primary col-md-3 h3">
+                    RRP =  @Model.RRP <br />
+                                      <div class="h5">
+                                          Shipping Cost = @Model.Shipping
+                                      </div>
+                </div>                        
+                        }
+                    }
+            </div>
+            <div class="row">
+
+            </div>
 
         </p>
      
